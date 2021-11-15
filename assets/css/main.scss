@@ -1,0 +1,318 @@
+@import "./responsive/variables.scss";
+@import "./responsive/mixins.scss";
+
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
+
+:root {
+    --background: #3a4663;
+    --mainColor: white;
+
+    --barBackground: #242d44;
+    --barRoundedColor: #d03f2f;
+
+    --screenBackground: #181f33;
+    --keyboardBackground: #242d44;
+
+    --buttonBackground: #eae3dc;
+    --buttonColor: #434a59;
+    --buttonBottomColor: #979797;
+    --buttonHoverColor: #fffffe;
+
+    --resultButtonBackground: #d03f2f;
+    --resultButtonBottomColor: #93261a;
+    --resultButtonHoverColor: #f96b5b;
+
+    --resetButtonBackground: #647198;
+    --resetButtonBottomColor: #414e73;
+    --resetButtonHoverColor: #a2b2e1;
+}
+
+.theme-1 {
+    --background: #e6e6e6;
+    --mainColor: #36362c;
+
+    --barBackground: #d2cdcd;
+    --barRoundedColor: #c85402;
+
+    --screenBackground: #eeeeee;
+    --keyboardBackground: #d2cdcd;
+
+    --buttonBackground: #e5e4e1;
+    --buttonColor: #36362c;
+    --buttonBottomColor: #979797;
+    --buttonHoverColor: #ffffff;
+
+    --resultButtonBackground: #c85402;
+    --resultButtonBottomColor: #873901;
+    --resultButtonHoverColor: #ff8a38;
+
+    --resetButtonBackground: #378187;
+    --resetButtonBottomColor: #1b6066;
+    --resetButtonHoverColor: #62b5bc;
+}
+
+.theme-2 {
+    --background: #17062a;
+    --mainColor: #ffe53d;
+
+    --barBackground: #1e0936;
+    --barRoundedColor: #00ded0;
+
+    --screenBackground: #1e0936;
+    --keyboardBackground: #1e0936;
+
+    --buttonBackground: #331c4d;
+    --buttonColor: #ffe53d;
+    --buttonBottomColor: #881c9e;
+    --buttonHoverColor: #6c34ac !important;
+
+    --resultButtonBackground: #00ded0;
+    --resultButtonBottomColor: #6cf9f1;
+    --resultButtonHoverColor: #93fff8;
+
+    --resetButtonBackground: #56077c;
+    --resetButtonBottomColor: #be15f4;
+    --resetButtonHoverColor: #8631af;
+}
+
+body {
+    margin: 0;
+    font-size: 32px;
+    background: var(--background);
+    color: var(--mainColor);
+    font-family: "Spartan", sans-serif;
+}
+
+.calculator {
+    width: 540px;
+    height: 708px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+
+    @include mobile {
+        width: 327px;
+        height: 88px;
+        top: 5%;
+        transform: translate(-50%, -5%);
+    }
+
+    .top {
+        display: flex;
+        justify-content: space-between;
+        .name {
+            position: relative;
+            top: 8px;
+            font-size: 32px;
+            letter-spacing: -0.53px;
+        }
+
+        .theme-selector {
+            display: flex;
+            .left {
+                margin-top: 26px;
+                font-size: 12px;
+                letter-spacing: 1px;
+            }
+            .right {
+                margin-left: 21px;
+                display: flex;
+                flex-direction: column;
+
+                .number-list {
+                    display: flex;
+                    justify-content: space-evenly;
+                    .number {
+                        font-size: 12px;
+                    }
+                }
+
+                .bar {
+                    margin-top: 5px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-evenly;
+                    width: 71px;
+                    height: 26px;
+                    background: var(--barBackground);
+                    border-radius: 13px;
+                    .level {
+                        cursor: pointer;
+                        width: 16px;
+                        height: 16px;
+                        border-radius: 50%;
+                    }
+
+                    .hover-1 {
+                        &:hover {
+                            background: #d03f2f;
+                        }
+                    }
+                    .hover-2 {
+                        &:hover {
+                            background: #c85402;
+                        }
+                    }
+                    .hover-3 {
+                        &:hover {
+                            background: #00ded0;
+                        }
+                    }
+
+                    .theme-1 {
+                        background: #d03f2f;
+                    }
+
+                    .theme-2 {
+                        background: #c85402;
+                    }
+
+                    .theme-3 {
+                        background: #00ded0;
+                    }
+                }
+            }
+        }
+    }
+
+    .screen {
+        margin-top: 32px;
+        width: 540px;
+        height: 128px;
+        border-radius: 10px;
+        background: var(--screenBackground);
+        position: relative;
+
+        @include mobile {
+            width: 327px;
+            height: 88px;
+        }
+
+        .number {
+            position: absolute;
+            font-size: 48px;
+            letter-spacing: -0.8px;
+            top: 50%;
+            right: 32px;
+            transform: translate(0%, -50%);
+        }
+    }
+
+    .keyboard {
+        width: 540px;
+        background: var(--keyboardBackground);
+        border-radius: 10px;
+        margin-top: 32px;
+
+        @include mobile {
+            width: 327px;
+        }
+
+        .del {
+            font-size: 20px;
+            color: white;
+            background: var(--resetButtonBackground);
+            border-bottom: 4px solid var(--resetButtonBottomColor);
+
+            &:hover {
+                background: var(--resetButtonHoverColor);
+            }
+        }
+
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            padding-left: 30px;
+            padding-right: 32px;
+            padding-top: 32px;
+            padding-bottom: 24px;
+            justify-content: space-between;
+            gap: 24px;
+
+            @include mobile {
+                gap: 13px;
+                padding-left: 24px;
+                padding-right: 24px;
+                padding-top: 24px;
+                padding-bottom: 13px;
+            }
+
+            .normal-btn {
+                background: var(--buttonBackground);
+                color: var(--buttonColor);
+                border-bottom: 4px solid var(--buttonBottomColor);
+
+                &:hover {
+                    background: var(--buttonHoverColor);
+                }
+            }
+
+            .button {
+                cursor: pointer;
+                border-radius: 10px;
+                width: 101px;
+                height: 60px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                user-select: none;
+
+                @include mobile {
+                    width: 60px;
+                    height: 64px;
+                }
+            }
+        }
+
+        .bottom {
+            margin-left: 30px;
+            margin-bottom: 32px;
+            margin-right: 32px;
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+
+            @include mobile {
+                margin-left: 24px;
+                margin-right: 24px;
+            }
+
+            .big-btn {
+                cursor: pointer;
+                width: 227px;
+                height: 64px;
+                border-radius: 10px;
+                letter-spacing: -0.33px;
+                font-size: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                @include mobile {
+                    width: 133px;
+                    height: 64px;
+                }
+            }
+
+            .reset {
+                color: white !important;
+                background: var(--resetButtonBackground);
+                border-bottom: 4px solid var(--resetButtonBottomColor);
+                &:hover {
+                    background: var(--resetButtonHoverColor);
+                }
+            }
+
+            .result {
+                color: white !important;
+                background: var(--resultButtonBackground);
+                border-bottom: 4px solid var(--resultButtonBottomColor);
+
+                &:hover {
+                    background: var(--resultButtonHoverColor);
+                }
+            }
+        }
+    }
+}
