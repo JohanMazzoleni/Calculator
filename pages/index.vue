@@ -120,7 +120,7 @@ export default {
 	<main>
 		<section class="calculator">
 			<div class="top">
-				<div class="name">calc</div>
+				<h1 class="name">calc</h1>
 				<div class="theme-selector">
 					<div class="left">THEME</div>
 					<div class="right">
